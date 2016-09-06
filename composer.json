@@ -1,0 +1,31 @@
+{
+    "name": "veridu/veridu-php",
+    "description": "Veridu PHP SDK",
+    "keywords": ["veridu", "sdk", "user identification", "social media", "online services", "single sign on"],
+    "homepage": "http://veridu.github.io/veridu-php",
+    "authors": [
+        {
+            "name": "Veridu Ltd",
+            "email": "hello@veridu.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "guzzlehttp/guzzle": "6.0.*",
+        "lcobucci/jwt": "^3.1"
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "2.8.*",
+        "phpunit/phpunit": "4.8.*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "Veridu": "src",
+            "Test": "test"
+        }
+    },
+    "suggest": {
+        "ext-json": "JSON extension"
+    }
+}
