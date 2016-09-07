@@ -1,12 +1,14 @@
 <?php
 
-namespace Veridu\Endpoint;
+namespace Veridu\Endpoint\User;
 
+use Veridu\Endpoint\AbstractEndpoint;
 use Veridu\API;
+use Veridu\Exception;
 
-final class Companies extends AbstractEndpoint {
+final class RoleAccess extends AbstractEndpoint {
 	public function getRoute($params = [], $id = null) {
-		$route = 'companies';
+		$route = 'access/roles';
 
 		if ($id !== null) {
 			$route .= '/' . $id;
@@ -18,6 +20,6 @@ final class Companies extends AbstractEndpoint {
 	public function __construct($credentials, $version) {
 		parent::__construct($credentials, $version);
 
-		$this->setAuthMethod(API::AUTH_MANAGEMENT);
+		$this->setAuthMethod(API::AUTH_USER);
 	}
 }

@@ -1,12 +1,14 @@
 <?php
 
-namespace Veridu\Endpoint;
+namespace Veridu\Endpoint\Management;
 
+use Veridu\Endpoint\AbstractEndpoint;
 use Veridu\API;
+use Veridu\Exception;
 
-final class Companies extends AbstractEndpoint {
+final class Settings extends AbstractEndpoint {
 	public function getRoute($params = [], $id = null) {
-		$route = 'companies';
+		$route = sprintf('companies/%s/settings', array_pop($params));
 
 		if ($id !== null) {
 			$route .= '/' . $id;

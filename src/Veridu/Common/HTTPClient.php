@@ -43,17 +43,25 @@ final class HTTPClient {
 
         switch(strtoupper($method)) {
             case 'GET':
+
                 if (! empty($data)) {
                     $options['query'] = $data;
                 }
+
                 break;
 
             case 'POST':
             case 'PUT':
             case 'DELETE':
+
                 if (! empty($data)) {
-                    $options['form_params'] = $data;
+                    $options['body'] = json_encode($data, true);
+
+                    if (! isset($options['headers']['Content-Type'])) {
+                        $options['headers']['Content-Type'] = 'application/json';
+                    }
                 }
+
                 break;
 
             default:
@@ -73,6 +81,10 @@ final class HTTPClient {
 
         if ($json['status'] === false) {
             throw new Exception\APIError($json['error']['message']);
+        }
+
+        if (strtoupper($method) === 'DELETE') {
+            return true;
         }
 
         return $json['data'];

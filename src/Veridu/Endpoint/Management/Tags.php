@@ -1,12 +1,14 @@
 <?php
 
-namespace Veridu\Endpoint;
+namespace Veridu\Endpoint\Management;
 
+use Veridu\Endpoint\AbstractEndpoint;
 use Veridu\API;
+use Veridu\Exception;
 
-final class Companies extends AbstractEndpoint {
+final class Tags extends AbstractEndpoint {
 	public function getRoute($params = [], $id = null) {
-		$route = 'companies';
+		$route = sprintf('profiles/%s/tags', array_pop($params));
 
 		if ($id !== null) {
 			$route .= '/' . $id;
@@ -20,4 +22,8 @@ final class Companies extends AbstractEndpoint {
 
 		$this->setAuthMethod(API::AUTH_MANAGEMENT);
 	}
+
+	public function update($id, $data, ... $params) {
+    	throw new Exception\ActionNotExists();
+    }
 }

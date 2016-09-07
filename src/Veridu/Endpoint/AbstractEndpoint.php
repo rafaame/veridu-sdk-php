@@ -52,7 +52,27 @@ abstract class AbstractEndpoint implements EndpointInterface {
     	return ['Authorization' => $this->getAuthMethod()->authorizationHeader($this->credentials)];
     }
 
-    public function listAll() {
-    	return $this->client->get($this->getRoute(), [], $this->requiredHeaders());
+    public function listAll(... $params) {
+    	return $this->client->get($this->getRoute($params), [], $this->requiredHeaders());
+    }
+
+    public function getOne($id, ... $params) {
+        return $this->client->get($this->getRoute($params, $id), [], $this->requiredHeaders());
+    }
+
+    public function create($data, ... $params) {
+        return $this->client->post($this->getRoute($params), $data, $this->requiredHeaders());
+    }
+
+    public function update($id, $data, ... $params) {
+        return $this->client->put($this->getRoute($params, $id), $data, $this->requiredHeaders());
+    }
+
+    public function delete($id, ... $params) {
+        return $this->client->delete($this->getRoute($params, $id), [], $this->requiredHeaders());
+    }
+
+    public function deleteAll(... $params) {
+        return $this->client->delete($this->getRoute($params), [], $this->requiredHeaders());
     }
 }
