@@ -16,13 +16,13 @@
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "2.8.*",
-        "phpunit/phpunit": "4.8.*"
+        "phpunit/phpunit": "5.5.*"
     },
     "minimum-stability": "dev",
     "autoload": {
-        "psr-0": {
-            "Veridu": "src",
-            "Test": "test"
+        "psr-4": {
+            "Veridu\\": "src/Veridu",
+            "Test\\": "test"
         }
     },
     "suggest": {
